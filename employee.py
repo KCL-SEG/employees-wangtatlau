@@ -9,9 +9,64 @@ class Employee:
         pass
 
     def __str__(self):
-        return self.name
+        pass
 
+class Month(Employee):
+    def __init__(self, name, salary):
+        super().__init__(name)
+        self.salary = salary
+    def get_pay(self):
+        return self.salary
+    def __str__(self):
+        return (f"{self.name} works on a monthly salary of {self.salary}. Their total pay is {get_pay(self)}.")
 
+class Hour(Employee):
+    def __init__(self, name, rate, hours):
+        super().__init__(name)
+        self.rate = rate
+        self.hours = hours
+    def get_pay(self):
+        return self.rate * self.hours
+    def __str__(self):
+        return (f"{self.name} works on a contract of {self.hours} hours at {self.rate}/hour. Their total pay is {get_pay(self)}.")
+
+class MonthCon(Month):
+    def __init__(self, name, salary, con, com):
+        super().__init__(name, salary)
+        self.con = con
+        self.com = com
+    def get_pay(self):
+        return self.salary + self.con * self.com
+    def __str__(self):
+        return (f"{self.name} works on a monthly salary of {self.salary} and receives a commission for {self.con} contract(s) at {self.com}/contract. Their total pay is {get_pay(self)}.")
+
+class HourCon(Hour):
+    def __init__(self, name, rate, hours, con, com):
+        super().__init_(name, rate, hours)
+        self.con = con
+        self.com = com
+    def get_pay(self):
+        return self.rate * self.hours + self.con * self.com
+    def __str__(self):
+        return (f"{self.name} works on a contract of {self.hours} hours at {self.rate}/hour and receives a commission for {self.con} contract(s) at {self.com}/contract. Their total pay is {get_pay(self)}.")
+
+class MonthBon(Month):
+    def __init__(self, name, salary, bon):
+        super().__init_(name, salary)
+        self.bon = bon
+    def get_pay(self):
+        return self.salary + self.bon
+    def __str__(self):
+        return (f"{self.name} works on a monthly salary of {self.salary} and receives a bonus commission of {self.bon}. Their total pay is {get_pay(self)}.")
+
+class HourBon(Hour):
+    def __init__(self, name, rate, hours, bon):
+        super().__init_(name, rate, hours)
+        self.bon = bon
+    def get_pay(self):
+        return self.rate * self.hours + self.bon
+    def __str__(self):
+        return (f"{self.name} works on a contract of {self.hours} hours at {self.rate}/hour and receives a bonus commission of {self.bon}. Their total pay is {get_pay(self)}.")
 # Billie works on a monthly salary of 4000.  Their total pay is 4000.
 billie = Employee('Billie')
 
